@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       title: 'app_test',
       builder: (context, child) => Navigator(
         key: locator<DialogService>().dialogNavigationKey,
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState==ConnectionState.done) {
             return LoginView();
           }
-          return new Scaffold(
+          return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.lightGreen,
               title: Text('Aguarde seu HomeShare iniciar'),

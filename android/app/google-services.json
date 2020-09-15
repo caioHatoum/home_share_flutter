@@ -8,43 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1008287760432:android:6fe37c58984b16d55f6df5",
-        "android_client_info": {
-          "package_name": "com.example.app_test"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1008287760432-ddv30p4g4suobdo3f4ngi8pfhl28h1fg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.app_test",
-            "certificate_hash": "94d90bf86c3680ac47b6d0e21d0bf205eaecf757"
-          }
-        },
-        {
-          "client_id": "1008287760432-bde6g7vg2oij9ivvdu9r6cq9eqasfmco.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "YOUR_API_KEY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1008287760432-bde6g7vg2oij9ivvdu9r6cq9eqasfmco.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:1008287760432:android:4a49f87b1742b7005f6df5",
         "android_client_info": {
           "package_name": "com.maas_homeshare"

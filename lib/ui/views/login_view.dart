@@ -6,12 +6,29 @@ import 'package:app_test/ui/widgets/busy_button.dart';
 import 'package:app_test/ui/widgets/input_field.dart';
 import 'package:app_test/ui/widgets/text_link.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 import 'package:app_test/viewmodels/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
 
-  //controladores dos inputs de email e senha
+  LoginView() {
+    FutureBuilder(
+      future: SharedPreferences.getInstance(),
+      builder: (context, snapshot) {
+        if (snapshot != null) {
+          if (snapshot.data != null) {
+            var id = snapshot.data.getString('id');
+            if (id != null) {
+              _navigationService.navigateTo(HomeViewRoute);
+            }
+          }
+        }
+
+        return null;
+      });
+  }
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final NavigationService _navigationService = locator<NavigationService>();

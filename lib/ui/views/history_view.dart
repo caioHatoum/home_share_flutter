@@ -5,13 +5,13 @@ import 'package:app_test/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeView extends StatelessWidget {
+class HistoryView extends StatelessWidget {
   final NavigationService navigationService = locator<NavigationService>();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Widget>>(
-      future: HotelService().searchHotels(),
+      future: HotelService().getHistory(),
       builder: (context, snapshot) {
         return Scaffold(
           drawer: Container(
@@ -25,7 +25,10 @@ class HomeView extends StatelessWidget {
                       Icons.home,
                       color: Color(0xFF252DB7)
                     ),
-                    title: Text('Home')
+                    title: Text('Home'),
+                    onTap: () async {
+                      await navigationService.navigateTo(HomeViewRoute);
+                    }
                   ),
                   ListTile(
                     leading: Icon(
@@ -39,12 +42,7 @@ class HomeView extends StatelessWidget {
                       Icons.history,
                       color: Color(0xFF252DB7)
                     ),
-                    title: Text('Histórico'),
-                    onTap: () async {
-                      var prefs = await SharedPreferences.getInstance();
-                      await prefs.remove('id');
-                      await navigationService.navigateTo(HistoryViewRoute);
-                    }
+                    title: Text('Histórico')
                   ),
                   ListTile(
                     leading: Icon(

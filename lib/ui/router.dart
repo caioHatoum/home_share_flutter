@@ -1,4 +1,5 @@
 import 'package:app_test/ui/views/forgot_password_view.dart';
+import 'package:app_test/ui/views/history_view.dart';
 import 'package:app_test/ui/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:app_test/constants/route_names.dart';
@@ -26,6 +27,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: ForgotPasswordView(),
+      );
+    case HistoryViewRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: HistoryView(),
       );
     default:
       return MaterialPageRoute(

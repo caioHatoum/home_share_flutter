@@ -4,6 +4,7 @@ import 'package:app_test/services/dialog_service.dart';
 import 'package:app_test/services/navigation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationService {
 
@@ -19,8 +20,13 @@ class AuthenticationService {
         var user = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, 
           password: password);
-        return user != null;
+        var isLogged = user != null;
+        if (isLogged) {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('id', user.user.uid);
+        }
 
+        return isLogged;
       } catch (e) {
         return e.message;
       }

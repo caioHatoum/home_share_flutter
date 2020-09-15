@@ -37,6 +37,7 @@ dependencies:
   stacked: ^1.6.0
   stacked_services: ^0.4.3
   loading: ^1.0.2
+  shared_preferences: ^0.5.10
 
 dev_dependencies:
   flutter_test:
