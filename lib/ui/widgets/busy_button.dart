@@ -11,7 +11,7 @@ class BusyButton extends StatefulWidget {
       {@required this.title,
       this.busy = false,
       @required this.onPressed,
-      this.enabled = true});
+      this.enabled = true, Icon icon});
 
   @override
   _BusyButtonState createState() => _BusyButtonState();

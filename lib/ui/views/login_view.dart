@@ -84,7 +84,7 @@ class LoginView extends StatelessWidget {
                 ),
                 verticalSpaceMedium,
                 TextLink(
-                  'Entre na nossa casa.',
+                  'Cadastre-se.',
                   onPressed: () {
                     _navigationService.navigateTo(SignUpViewRoute);
                   },

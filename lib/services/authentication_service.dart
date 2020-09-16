@@ -4,7 +4,6 @@ import 'package:app_test/services/dialog_service.dart';
 import 'package:app_test/services/navigation_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationService {
 
@@ -20,13 +19,8 @@ class AuthenticationService {
         var user = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, 
           password: password);
-        var isLogged = user != null;
-        if (isLogged) {
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('id', user.user.uid);
-        }
+        return user != null;
 
-        return isLogged;
       } catch (e) {
         return e.message;
       }
@@ -50,8 +44,6 @@ class AuthenticationService {
       } catch (e) {
         return e.message;
       }
-
-    return null;
   }
 
   Future forgotPassword({
@@ -69,4 +61,23 @@ class AuthenticationService {
       return e.message;
     }
   }
+
+  Future signOut()async{
+    try {
+      await _dialogService.showConfirmationDialog(
+        title: 'Sair',
+        description: 'Deseja realmente sair do HomeShare?',
+        confirmationTitle: 'Sim',
+        cancelTitle: 'Não')
+        .then(
+          (value) => 
+            value.confirmed?
+            _firebaseAuth.signOut():_navigationService.navigateTo(HomeViewRoute));
+    } catch (e) {
+      await _dialogService.showDialog(
+        title: 'Erro',
+        description: e.toString());
+    }
+  }
 }
+
